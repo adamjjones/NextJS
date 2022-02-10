@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import styles from '../styles/Home.module.css'
 
 const DatabaseQuery = () => {
   const [data, setData] = useState([])
@@ -6,10 +7,8 @@ const DatabaseQuery = () => {
     fetch(`http://localhost:5000/api/v1/vehicles`).then(data => {
       return data.json();
     }).then(data => {
-      console.log('2nd then', data)
       setData(data)
     })
-    console.log('fetchData called')
   }
 
   console.log('data', data)
@@ -29,10 +28,10 @@ const DatabaseQuery = () => {
           <tbody>
             {data.map((vehicle, i) => {
               return (<tr key={i}>
-                <td>{vehicle.year}</td>
-                <td>{vehicle.make}</td>
-                <td>{vehicle.model}</td>
-                <td>{vehicle.color}</td>
+                <td className={styles.table_style}>{vehicle.year}</td>
+                <td className={styles.table_style}>{vehicle.make}</td>
+                <td className={styles.table_style}>{vehicle.model}</td>
+                <td className={styles.table_style}>{vehicle.color}</td>
               </tr>
               )
 
